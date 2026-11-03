@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Feature | The Linkage Magazine</title>
+<link rel="icon" href="linkage-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#d4af37;--red:#7b1c1c;--green:#1b7b61;--black:#000;--white:#fff;--ink:#1a1a1a;--mute:#5d5d5d;--line:#e4dfd0;--paper:#fbfaf6;
+--serif:'Fraunces',Georgia,serif;--sans:'Figtree',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font:17px/1.6 var(--sans);color:var(--ink);background:var(--paper)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.top{background:var(--white);display:flex;justify-content:center;border-bottom:3px solid var(--gold)}
+.top img{width:min(300px,70vw);display:block;padding:10px 0}
+.hero{background:var(--black);color:var(--white);padding:clamp(48px,9vw,110px) 24px clamp(56px,9vw,100px);text-align:center;position:relative;overflow:hidden}
+.hero::before,.hero::after{content:"";position:absolute;border:2px solid var(--gold);border-radius:50%;width:min(520px,80vw);aspect-ratio:1;opacity:.35}
+.hero::before{left:-14%;top:-30%}
+.hero::after{right:-16%;bottom:-45%;border-color:var(--green);opacity:.6;animation:drift 1.6s ease-out both}
+@keyframes drift{from{transform:translate(60px,-40px);opacity:0}}
+.hero>*{position:relative;z-index:1}
+.hero h1{font:400 clamp(2.4rem,7vw,5rem)/1.05 var(--serif);max-width:15ch;margin:0 auto 22px;letter-spacing:-.01em}
+.hero h1 em{color:var(--gold)}
+.hero p{max-width:56ch;margin:0 auto;color:#d9d9d9}
+.cta{display:inline-block;margin-top:34px;background:var(--gold);color:#000;font-weight:600;padding:14px 32px;border:0;border-radius:2px;text-decoration:none;cursor:pointer;font:600 1rem var(--sans)}
+.cta:hover{background:#e6c458}
+main{max-width:860px;margin:0 auto;padding:56px 22px 90px}
+.prog{position:sticky;top:0;z-index:5;background:var(--paper);padding:14px 0 10px;margin-bottom:28px}
+.prog ol{list-style:none;padding:0;display:flex;gap:6px}
+.prog li{flex:1;font-size:.82rem;color:var(--mute);border-top:4px solid var(--line);padding-top:6px;transition:.3s}
+.prog li.on{color:var(--ink);border-color:var(--gold);font-weight:600}
+.prog li.done{border-color:var(--green);color:var(--green)}
+@media(max-width:620px){.prog li span{display:none}}
+fieldset.step{border:0;padding:0;display:none}
+fieldset.step.on{display:block;animation:in .35s ease}
+@keyframes in{from{opacity:0;transform:translateY(8px)}}
+h2{font:600 clamp(1.7rem,4vw,2.4rem)/1.15 var(--serif);margin-bottom:8px}
+.lead{color:var(--mute);margin-bottom:30px;max-width:60ch}
+label,.lbl{display:block;font-weight:600;margin:22px 0 6px}
+label small,.lbl small{font-weight:400;color:var(--mute)}
+.req::after{content:" *";color:var(--red)}
+input[type=text],input[type=email],input[type=tel],input[type=url],textarea{width:100%;font:inherit;padding:13px 14px;border:1.5px solid #cfc9b6;background:var(--white);border-radius:2px;transition:border .2s}
+input:focus,textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px #d4af3733}
+.bad{border-color:var(--red)!important}
+.err{color:var(--red);font-size:.9rem;min-height:1.2em}
+textarea{min-height:130px;resize:vertical}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:0 22px}
+@media(max-width:620px){.grid{grid-template-columns:1fr}}
+.fmt{display:grid;gap:14px;margin:6px 0 10px}
+.fmt label{margin:0;cursor:pointer;font-weight:400}
+.fmt input{position:absolute;opacity:0}
+.fmt div{border:1.5px solid #cfc9b6;background:var(--white);padding:18px 20px 18px 54px;position:relative;transition:.2s}
+.fmt div::before{content:"";position:absolute;left:20px;top:22px;width:18px;height:18px;border:2px solid var(--mute);border-radius:50%}
+.fmt b{display:block;font:600 1.15rem var(--serif)}
+.fmt span{color:var(--mute);font-size:.95rem}
+.fmt input:checked+div{border-color:var(--gold);background:#fffaf0;box-shadow:inset 4px 0 0 var(--gold)}
+.fmt input:checked+div::before{border-color:var(--green);background:radial-gradient(var(--green) 45%,transparent 50%)}
+.fmt input:focus-visible+div{outline:3px solid var(--gold)}
+.q{padding:26px 0;border-bottom:1px solid var(--line)}
+.q h3{font:600 1.3rem/1.25 var(--serif);margin-bottom:4px}
+.q p{color:var(--mute);margin-bottom:12px;font-size:.98rem}
+.q .pre{font:italic 400 1.05rem var(--serif);margin-bottom:8px;color:var(--red)}
+.cnt{font-size:.82rem;color:var(--mute);text-align:right}
+.cnt.over{color:var(--red);font-weight:600}
+#storyBox{display:none;margin-top:30px;padding:24px;background:#000;color:#fff}
+#storyBox label{color:var(--gold);margin-top:0}
+#storyBox textarea{min-height:260px;color:#000}
+.photos{display:grid;grid-template-columns:1fr 250px;gap:34px;align-items:start}
+@media(max-width:760px){.photos{grid-template-columns:1fr}.cover{order:-1;max-width:240px}}
+.drop{border:2px dashed #b9b29a;background:var(--white);padding:22px;text-align:center;cursor:pointer;transition:.2s;margin-bottom:6px}
+.drop:hover,.drop.hov{border-color:var(--gold);background:#fffaf0}
+.drop b{display:block;font:600 1.05rem var(--serif)}
+.drop span{font-size:.9rem;color:var(--mute)}
+.thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:10px;margin:10px 0 4px}
+.thumbs div{position:relative;aspect-ratio:1;background:#eee center/cover no-repeat;border:2px solid var(--green)}
+.thumbs div.logo{background-size:contain;background-color:#fff}
+.thumbs button{position:absolute;top:3px;right:3px;width:26px;height:26px;border:0;border-radius:50%;background:#000;color:#fff;cursor:pointer;font-size:15px;line-height:1}
+.thumbs button:hover{background:var(--red)}
+.cover{position:sticky;top:90px;aspect-ratio:3/4;background:#111 center/cover no-repeat;border:1px solid #000;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 18px 40px #0003;overflow:hidden}
+.cover .mast{background:#000;color:var(--gold);text-align:center;font:600 .95rem var(--serif);letter-spacing:.2em;padding:8px}
+.cover .ph{margin:auto;color:#aaa;text-align:center;font-size:.85rem;padding:0 20px}
+.cover .lg{background:#fff;height:56px;background-position:center;background-repeat:no-repeat;background-size:auto 70%;border-top:3px solid var(--gold);display:flex;align-items:center;justify-content:center;color:#999;font-size:.78rem}
+.cover-cap{font-size:.8rem;color:var(--mute);margin-top:8px}
+.review{background:var(--white);border:1px solid var(--line);padding:22px 24px;margin:18px 0}
+.review dt{font-weight:600;color:var(--red);font-size:.9rem}
+.review dd{margin:0 0 10px}
+.chk{display:flex;gap:12px;align-items:flex-start;font-weight:400;margin-top:20px}
+.chk input{width:20px;height:20px;margin-top:4px;accent-color:var(--green)}
+.nav{display:flex;justify-content:space-between;gap:12px;margin-top:38px}
+.btn{font:600 1rem var(--sans);padding:14px 30px;border:0;border-radius:2px;cursor:pointer}
+.btn.pri{background:var(--red);color:#fff}
+.btn.pri:hover{background:#932323}
+.btn.sec{background:transparent;border:1.5px solid var(--ink);color:var(--ink)}
+.btn:disabled{opacity:.55;cursor:wait}
+.hp{position:absolute;left:-9999px}
+.done{display:none;text-align:center;padding:60px 10px}
+.done .tick{width:84px;height:84px;border-radius:50%;background:var(--green);color:#fff;font-size:44px;line-height:84px;margin:0 auto 20px}
+footer{background:#000;color:#ccc;text-align:center;padding:40px 22px;font-size:.95rem;border-top:3px solid var(--gold)}
+footer a{color:var(--gold);text-decoration:none}
+footer p+p{margin-top:6px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="top"><img src="linkage-logo.png" alt="Linkage – The Linkage Magazine by LINK"></div>
+
+<header class="hero">
+  <h1>Let’s get you <em>feature ready</em></h1>
+  <p>The Linkage Magazine isn’t just about successful balance sheets or logos. It’s about the people who built them. For our final 2026 features, running through to 30 December, the spotlight is on business owners like you.</p>
+  <a class="cta" href="#form">Start my feature</a>
+</header>
+
+<main id="form">
+<nav class="prog" aria-label="Progress"><ol id="prog"></ol></nav>
+<form id="f" novalidate>
+<input class="hp" type="text" name="website_hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+<fieldset class="step on">
+  <h2>Your details</h2>
+  <p class="lead">So we know who to feature and how to reach you if we need more information.</p>
+  <div class="grid">
+    <div><label class="req" for="name">Your full name</label><input type="text" id="name" required autocomplete="name"><div class="err"></div></div>
+    <div><label class="req" for="business">Business or organisation name</label><input type="text" id="business" required autocomplete="organization"><div class="err"></div></div>
+    <div><label class="req" for="whatsapp">WhatsApp number <small>(with country code)</small></label><input type="tel" id="whatsapp" required placeholder="+27 82 000 0000" autocomplete="tel"><div class="err"></div></div>
+    <div><label class="req" for="email">Email address</label><input type="email" id="email" required autocomplete="email"><div class="err"></div></div>
+    <div><label for="website">Website</label><input type="url" id="website" placeholder="https://" autocomplete="url"></div>
+    <div><label for="location">Physical location / Headquarters</label><input type="text" id="location"></div>
+  </div>
+  <label for="social">Social media links</label><textarea id="social" style="min-height:90px" placeholder="Instagram, Facebook, LinkedIn, TikTok…"></textarea>
+</fieldset>
+
+<fieldset class="step">
+  <h2>How should we tell your story?</h2>
+  <p class="lead">Pick the format you prefer. You’ll answer the same ten questions either way.</p>
+  <div class="fmt">
+    <label><input type="radio" name="fmt" value="Write Your Own Story" checked><div><b>Write your own story</b><span>Draft your narrative in your own words (800 words max), using the questions as your guide.</span></div></label>
+    <label><input type="radio" name="fmt" value="Editor-Curated Story"><div><b>Editor-curated story</b><span>Our editorial team weaves a beautifully written narrative based entirely on your answers.</span></div></label>
+    <label><input type="radio" name="fmt" value="Q&A Interview Format"><div><b>Q&amp;A interview</b><span>A direct, engaging question-and-answer layout.</span></div></label>
+  </div>
+</fieldset>
+
+<fieldset class="step">
+  <h2>The owner’s journey</h2>
+  <p class="lead">There are no right or wrong answers. The more candid and genuine you are, the more deeply our readers will connect. Skip any you’d rather not answer.</p>
+  <div id="qs"></div>
+  <div id="storyBox">
+    <label for="story">Your story <small style="color:#ccc">(optional draft, 800 words max)</small></label>
+    <textarea id="story" data-max="800"></textarea><div class="cnt" data-for="story"></div>
+  </div>
+</fieldset>
+
+<fieldset class="step">
+  <h2>Photos &amp; logo</h2>
+  <p class="lead">Your portrait and logo share our front page. Up to 10 images in total: JPG, PNG or WebP. We shrink them in your browser so they send quickly.</p>
+  <div class="photos"><div>
+    <div class="lbl req">Front-page portraits <small>(2)</small></div>
+    <div class="drop" data-k="portraits" data-max="2" tabindex="0" role="button"><b>Add 2 portraits</b><span>High-resolution, well-lit, sharp. You as the face of the brand.</span></div>
+    <div class="thumbs" id="t-portraits"></div>
+    <div class="lbl req">Business logo <small>(1)</small></div>
+    <div class="drop" data-k="logo" data-max="1" tabindex="0" role="button"><b>Add your logo</b><span>Transparent PNG preferred.</span></div>
+    <div class="thumbs" id="t-logo"></div>
+    <div class="lbl req">Lifestyle &amp; behind-the-scenes <small>(up to 7)</small></div>
+    <div class="drop" data-k="gallery" data-max="7" tabindex="0" role="button"><b>Add photos that tell your story</b><span>You with clients or your team, your product, your workspace.</span></div>
+    <div class="thumbs" id="t-gallery"></div>
+    <div class="err" id="photoErr"></div>
+  </div>
+  <aside class="cover" id="cover" aria-label="Cover preview"><div class="mast">LINKAGE</div><div class="ph" id="coverPh">Your first portrait appears here</div><div class="lg" id="coverLg">your logo</div></aside>
+  </div>
+  <p class="cover-cap" style="text-align:right">Rough preview only. Our editors do the final layout.</p>
+  <input type="file" id="picker" accept="image/jpeg,image/png,image/webp" multiple hidden>
+</fieldset>
+
+<fieldset class="step">
+  <h2>Review &amp; send</h2>
+  <p class="lead">Check your details, then send everything to our editorial team.</p>
+  <dl class="review" id="review"></dl>
+  <label class="chk"><input type="checkbox" id="ok"><span>I’m happy for The Linkage Magazine to use my answers, photos and logo to produce and publish my feature, and to contact me on the details above.</span></label>
+  <div class="err" id="sendErr" role="alert"></div>
+</fieldset>
+
+<div class="nav"><button type="button" class="btn sec" id="back" style="visibility:hidden">Back</button><button type="button" class="btn pri" id="next">Continue</button></div>
+</form>
+
+<section class="done" id="done" aria-live="polite">
+  <div class="tick">✓</div>
+  <h2>Thank you. Your story is with us.</h2>
+  <p class="lead" style="margin:10px auto">Our editorial team will review your feature and contact you on WhatsApp or email if we need anything more.</p>
+</section>
+</main>
+
+<footer>
+  <p><b style="color:#fff">LINK</b> · The Linkage Magazine</p>
+  <p><a href="tel:+27745718332">+27 74 571 8332</a> · <a href="mailto:office@getlinked.co.za">office@getlinked.co.za</a> · <a href="https://www.getlinked.co.za">www.getlinked.co.za</a></p>
+</footer>
+
+<script>
+const Q=[
+["The Person Behind the Brand","Tell us a little about yourself. Who are you when you step away from the business and switch off the phone?"],
+["The Spark","Every business begins with a leap of faith. What personal moment or specific need in the market first sparked the dream to start your own company?"],
+["The Catalyst","Looking back at your timeline, was there a defining breakthrough or a turning point where you realized, “This business is officially going to make it”?"],
+["The Grit Factor","Behind every successful brand are countless unseen hurdles. What has been your toughest obstacle as a business owner, and how did it change your approach to leadership?"],
+["The Daily Impact","Beyond making a profit, what do you hope people truly experience when they walk through your doors, use your services, or meet you as the founder?"],
+["The “Why”","Entrepreneurship can be exhausting. Is there a client breakthrough, employee milestone, or community moment that recently reminded you exactly why you do this?"],
+["The Compass","What core personal values guide your decisions when economic climates or business decisions get incredibly tough?"],
+["The Next Horizon","As we look toward the future, what is the next big goal or upcoming milestone that keeps you up at night with excitement?"],
+["Words for the Next Generation","If an aspiring entrepreneur is reading this, standing exactly where you were on day one, what is the single most valuable piece of advice you would offer them?"],
+["Your Legacy","Finish this sentence."]
+];
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const steps=$$('.step'),names=['Details','Format','Questions','Photos','Send'];
+let cur=0;const files={portraits:[],logo:[],gallery:[]};
+$('#prog').innerHTML=names.map(n=>`<li><span>${n}</span></li>`).join('');
+$('#qs').innerHTML=Q.map((q,i)=>`<div class="q"><h3>${i+1}. ${q[0]}</h3><p>${q[1]}</p>${i==9?'<div class="pre">If there’s one thing I hope people remember about my legacy as a business owner, it’s…</div>':''}<textarea id="q${i}" aria-label="${q[0]}"></textarea></div>`).join('');
+
+// autosave text (not photos)
+const saved=JSON.parse(localStorage.getItem('linkage')||'{}');
+$$('input[type=text],input[type=email],input[type=tel],input[type=url],textarea').forEach(el=>{
+  if(el.id&&saved[el.id])el.value=saved[el.id];
+  el.addEventListener('input',()=>{if(!el.id)return;saved[el.id]=el.value;try{localStorage.setItem('linkage',JSON.stringify(saved))}catch(e){}});
+});
+const words=t=>(t.trim().match(/\S+/g)||[]).length;
+function count(){const t=$('#story'),c=$('.cnt');const n=words(t.value);c.textContent=n+' / 800 words';c.classList.toggle('over',n>800)}
+$('#story').addEventListener('input',count);count();
+function fmt(){const own=$('input[name=fmt]:checked').value==='Write Your Own Story';$('#storyBox').style.display=own?'block':'none'}
+$$('input[name=fmt]').forEach(r=>r.onchange=fmt);fmt();
+
+function show(i){
+  cur=i;steps.forEach((s,k)=>s.classList.toggle('on',k===i));
+  $$('#prog li').forEach((li,k)=>{li.className=k===i?'on':k<i?'done':''});
+  $('#back').style.visibility=i?'visible':'hidden';
+  $('#next').textContent=i===4?'Send my feature':'Continue';
+  if(i===4)review();
+  if(!first)$('.prog').scrollIntoView({behavior:'smooth'});first=false;
+}
+let first=true;
+function validate(i){
+  let ok=true;
+  if(i===0){$$('.step:first-of-type [required]').forEach(el=>{
+    const err=el.parentElement.querySelector('.err');let m='';
+    if(!el.value.trim())m='Please fill this in.';
+    else if(el.type==='email'&&!/^\S+@\S+\.\S+$/.test(el.value))m='Enter a valid email address.';
+    else if(el.type==='tel'&&el.value.replace(/\D/g,'').length<9)m='Enter your WhatsApp number with country code.';
+    el.classList.toggle('bad',!!m);if(err)err.textContent=m;if(m){ok=false}
+  });if(!ok)$('.bad').focus()}
+  if(i===2&&words($('#story').value)>800){alert('Your story is over 800 words. Please trim it.');ok=false}
+  if(i===3){let m='';
+    if(files.portraits.length<2)m='Please add 2 portraits.';
+    else if(!files.logo.length)m='Please add your logo.';
+    else if(files.gallery.length<5)m='Please add at least 5 lifestyle photos (up to 7).';
+    $('#photoErr').textContent=m;ok=!m}
+  return ok;
+}
+$('#next').onclick=()=>{if(cur===4)return send();if(validate(cur))show(cur+1)};
+$('#back').onclick=()=>show(cur-1);
+
+// uploads
+let target=null;const picker=$('#picker');
+$$('.drop').forEach(d=>{
+  const open=()=>{target=d.dataset.k;picker.multiple=d.dataset.max>1;picker.click()};
+  d.onclick=open;d.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}};
+  d.ondragover=e=>{e.preventDefault();d.classList.add('hov')};d.ondragleave=()=>d.classList.remove('hov');
+  d.ondrop=e=>{e.preventDefault();d.classList.remove('hov');add(d.dataset.k,e.dataTransfer.files)};
+});
+picker.onchange=()=>{add(target,picker.files);picker.value=''};
+function add(k,list){
+  const max=+document.querySelector(`.drop[data-k=${k}]`).dataset.max;
+  for(const f of list){
+    if(!/^image\/(jpeg|png|webp)$/.test(f.type)){$('#photoErr').textContent='Only JPG, PNG or WebP images, please.';continue}
+    if(files[k].length>=max){$('#photoErr').textContent=`You can add up to ${max} here.`;break}
+    $('#photoErr').textContent='';files[k].push({file:f,url:URL.createObjectURL(f)});
+  }draw();
+}
+function draw(){
+  for(const k in files){
+    $('#t-'+k).innerHTML=files[k].map((x,i)=>`<div class="${k==='logo'?'logo':''}" style="background-image:url(${x.url})"><button type="button" aria-label="Remove" data-k="${k}" data-i="${i}">×</button></div>`).join('');
+  }
+  $$('.thumbs button').forEach(b=>b.onclick=()=>{files[b.dataset.k].splice(b.dataset.i,1);draw()});
+  const p=files.portraits[0],l=files.logo[0],c=$('#cover');
+  c.style.backgroundImage=p?`url(${p.url})`:'';$('#coverPh').style.display=p?'none':'block';
+  const lg=$('#coverLg');lg.style.backgroundImage=l?`url(${l.url})`:'';lg.textContent=l?'':'your logo';
+}
+
+function review(){
+  const v=id=>$('#'+id).value.trim()||'—';const a=Q.filter((q,i)=>$('#q'+i).value.trim()).length;
+  $('#review').innerHTML=`<dt>Owner</dt><dd>${esc(v('name'))}</dd><dt>Business</dt><dd>${esc(v('business'))}</dd><dt>WhatsApp</dt><dd>${esc(v('whatsapp'))}</dd><dt>Email</dt><dd>${esc(v('email'))}</dd><dt>Format</dt><dd>${esc($('input[name=fmt]:checked').value)}</dd><dt>Questions answered</dt><dd>${a} of 10</dd><dt>Images</dt><dd>${files.portraits.length+files.logo.length+files.gallery.length} (2 portraits, 1 logo, ${files.gallery.length} lifestyle)</dd>`;
+}
+function esc(s){return s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+
+// compress images in the browser so the request stays under Vercel's 4.5 MB limit
+async function shrink(file,maxDim,q,png){
+  const bmp=await createImageBitmap(file),s=Math.min(1,maxDim/Math.max(bmp.width,bmp.height));
+  const cv=document.createElement('canvas');cv.width=Math.round(bmp.width*s);cv.height=Math.round(bmp.height*s);
+  const ctx=cv.getContext('2d');
+  if(!png){ctx.fillStyle='#fff';ctx.fillRect(0,0,cv.width,cv.height)}
+  ctx.drawImage(bmp,0,0,cv.width,cv.height);
+  const blob=await new Promise(r=>cv.toBlob(r,png?'image/png':'image/jpeg',q));
+  return new Promise(r=>{const fr=new FileReader();fr.onload=()=>r(fr.result.split(',')[1]);fr.readAsDataURL(blob)});
+}
+async function build(tier){
+  const [dim,q]=tier,out=[];
+  const jobs=[...files.portraits.map((x,i)=>['portrait-'+(i+1),x,0]),...files.logo.map(x=>['logo',x,1]),...files.gallery.map((x,i)=>['lifestyle-'+(i+1),x,0])];
+  for(const [n,x,isLogo] of jobs){
+    const png=isLogo&&x.file.type==='image/png';
+    out.push({name:n+(png?'.png':'.jpg'),data:await shrink(x.file,isLogo?900:dim,q,png)});
+  }return out;
+}
+async function send(){
+  if(!$('#ok').checked){$('#sendErr').textContent='Please tick the box to confirm.';return}
+  const btn=$('#next');btn.disabled=true;$('#sendErr').textContent='';btn.textContent='Preparing your photos…';
+  try{
+    let out;
+    for(const t of [[2000,.85],[1600,.75],[1300,.68],[1000,.6]]){
+      out=await build(t);if(out.reduce((n,f)=>n+f.data.length,0)<3.9e6)break;
+    }
+    btn.textContent='Sending…';
+    const body={website_hp:$('.hp').value,fields:{name:$('#name').value.trim(),business:$('#business').value.trim(),whatsapp:$('#whatsapp').value.trim(),email:$('#email').value.trim(),website:$('#website').value.trim(),social:$('#social').value.trim(),location:$('#location').value.trim(),format:$('input[name=fmt]:checked').value,story:$('#story').value.trim()},
+      answers:Q.map((q,i)=>({q:(i+1)+'. '+q[0]+(i==9?': If there’s one thing I hope people remember about my legacy as a business owner, it’s…':''),a:$('#q'+i).value.trim()})),files:out};
+    const r=await fetch('/api/submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+    if(!r.ok)throw 0;
+    localStorage.removeItem('linkage');$('#f').style.display='none';$('.prog').style.display='none';$('#done').style.display='block';$('#form').scrollIntoView();
+  }catch(e){
+    $('#sendErr').textContent='Something went wrong sending your feature. Check your connection and try again, or email linkage@getlinked.co.za directly.';
+    btn.disabled=false;btn.textContent='Send my feature';
+  }
+}
+show(0);
+</script>
+</body>
+</html>
